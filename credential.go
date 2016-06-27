@@ -404,13 +404,13 @@ func (lib *Lib) StoreCredInto(inputCredHandle *CredId,
 	maj := C.wrap_gss_store_cred_into(lib.Fp_gss_store_cred_into,
 		&min,
 		inputCredHandle.C_gss_cred_id_t,
-		C.gss_cred_usage_t(credUsage),
+		C.gss_cred_usage_t(inputUsage),
 		desiredMech.C_gss_OID,
 		C.OM_uint32(overwriteCred),
 		C.OM_uint32(defaultCred),
 		credStore.C_gss_const_key_value_set_t,
 		&elementsStored.C_gss_OID_set,
-		&credUsageStored.C_gss_cred_usage_t)
+		(*C_gss_cred_usage_t)&credUsageStored)
 
 	err = lib.stashLastStatus(maj, min)
 	if err != nil {
