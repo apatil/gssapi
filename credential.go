@@ -414,7 +414,7 @@ func (lib *Lib) StoreCredInto(inputCredHandle *CredId,
 
 	err = lib.stashLastStatus(maj, min)
 	if err != nil {
-		return nil, nil, err
+		return nil, 0, err
 	}
 
 	return elementsStored,
