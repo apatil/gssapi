@@ -394,7 +394,7 @@ func (lib *Lib) InquireCredByMech(credHandle *CredId, mechType *OID) (
 
 // StoreCredInto implements gss_store_cred_into API.
 func (lib *Lib) StoreCredInto(inputCredHandle *CredId,
-	inputUsage *CredUsage, desiredMech *OID,  overwriteCred uint32, defaultCred uint32, 
+	inputUsage CredUsage, desiredMech *OID,  overwriteCred uint32, defaultCred uint32, 
 	credStore *ConstKeyValueSet) (elementsStored *OIDSet, credUsageStored CredUsage, err error) {
 
 	min := C.OM_uint32(0)
