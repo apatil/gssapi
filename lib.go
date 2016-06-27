@@ -133,6 +133,7 @@ type ftable struct {
 
 	// credential.go
 	Fp_gss_acquire_cred         unsafe.Pointer
+	Fp_gss_acquire_cred_impersonate_name         unsafe.Pointer
 	Fp_gss_add_cred             unsafe.Pointer
 	Fp_gss_inquire_cred         unsafe.Pointer
 	Fp_gss_inquire_cred_by_mech unsafe.Pointer

@@ -7,7 +7,6 @@ We have stuff left outstanding, and would appreciate your help.
 These are the remaining GSSAPI calls to implement, in no particular order.
 
 - [ ] gss_acquire_cred_from
-- [ ] gss_acquire_cred_impersonate_name
 - [ ] gss_acquire_cred_with_password
 - [ ] gss_add_buffer_set_member
 - [ ] gss_add_cred_from
