@@ -177,7 +177,7 @@ wrap_gss_acquire_cred_impersonate_name(void *fp,
 }
 
 OM_uint32
-wrap_gss_store_cred_into(gss_store_cred_into(void *fp
+wrap_gss_store_cred_into(void *fp
     OM_uint32 * minor_status,
     const gss_cred_id_t input_cred_handle,
     const gss_cred_usage_t input_usage,
