@@ -176,6 +176,40 @@ wrap_gss_acquire_cred_impersonate_name(void *fp,
 		time_rec);
 }
 
+OM_uint32
+wrap_gss_store_cred_into(gss_store_cred_into(void *fp
+    OM_uint32 * minor_status,
+    const gss_cred_id_t input_cred_handle,
+    const gss_cred_usage_t input_usage,
+    const gss_OID desired_mech,
+    OM_uint32 overwrite_cred,
+    OM_uint32 default_cred,
+    gss_const_key_value_set_t cred_store,
+    gss_OID_set * elements_stored,
+    gss_cred_usage_t * cred_usage_stored)
+	{
+		return ((OM_uint32(*)(
+			OM_uint32*,
+			const gss_cred_id_t,
+			const gss_cred_usage_t,
+			const gss_OID,
+			OM_uint32,
+			OM_uint32,
+			gss_const_key_value_set_t,
+			gss_OID_set *,
+			gss_cred_usage *)
+		) fp)(
+			minor_status,
+			impersonator_cred_handle,
+			desired_name,
+			time_req,
+			desired_mechs,
+			cred_usage,
+			output_cred_handle,
+			actual_mechs,
+			time_rec);
+	}
+
 */
 import "C"
 
@@ -354,6 +388,36 @@ func (lib *Lib) InquireCredByMech(credHandle *CredId, mechType *OID) (
 		time.Duration(ilife) * time.Second,
 		time.Duration(alife) * time.Second,
 		credUsage,
+		nil
+}
+
+// StoreCredInto implements gss_store_cred_into API.
+func (lib *Lib) StoreCredInto(inputCredHandle *CredId,
+	inputUsage *CredUsage, desiredMech *OID,  overwriteCred uint32, defaultCred uint32, 
+	credStore *ConstKeyValueSet) (elementsStored *OIDSet, credUsageStored *CredUsage, err error) {
+
+	min := C.OM_uint32(0)
+	elementsStored = lib.NewOIDSet()
+	credUsageStored = CredUsage(0)
+
+	maj := C.wrap_gss_store_cred_into(lib.Fp_gss_store_cred_into,
+		&min,
+		inputCredHandle.C_gss_cred_id_t,
+		C.gss_cred_usage_t(credUsage),
+		desiredMech.C_gss_OID,
+		C.OM_uint32(overwriteCred),
+		C.OM_uint32(defaultCred),
+		credStore.C_gss_const_key_value_set_t,
+		&elementsStored.C_gss_OID_set,
+		&credUsageStored.C_gss_cred_usage_t)
+
+	err = lib.stashLastStatus(maj, min)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return elementsStored,
+		credUsageStored,
 		nil
 }
 

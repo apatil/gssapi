@@ -61,7 +61,6 @@ These are the remaining GSSAPI calls to implement, in no particular order.
 - [ ] gss_set_sec_context_option
 - [ ] gss_sign
 - [ ] gss_store_cred
-- [ ] gss_store_cred_into
 - [ ] gss_unseal
 - [ ] gss_unwrap_aead
 - [ ] gss_unwrap_iov
