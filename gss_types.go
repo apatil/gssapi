@@ -76,7 +76,7 @@ type CtxId struct {
 // storing credentials.
 type ConstKeyValueSet struct {
 	*Lib
-	C_const_key_value_set_t C.gss_const_key_value_set_t
+	C_gss_const_key_value_set_t C.gss_const_key_value_set_t
 }
 
 // Aliases for the simple types
