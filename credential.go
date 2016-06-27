@@ -4,6 +4,7 @@ package gssapi
 
 /*
 #include <gssapi/gssapi.h>
+#include <gssapi/gssapi_ext.h>
 
 OM_uint32
 wrap_gss_acquire_cred(void *fp,
