@@ -234,7 +234,7 @@ func (lib *Lib) AcquireCredImpersonateName(impersonatorCredHandle *CredId, desir
 
 	maj := C.wrap_gss_acquire_cred_impersonate_name(lib.Fp_gss_acquire_cred_impersonate_name,
 		&min,
-		&impersonatorCredHandle.C_gss_cred_id_t,
+		impersonatorCredHandle.C_gss_cred_id_t,
 		desiredName.C_gss_name_t,
 		C.OM_uint32(timeReq.Seconds()),
 		desiredMechs.C_gss_OID_set,
