@@ -201,14 +201,14 @@ wrap_gss_store_cred_into(void *fp,
 			gss_cred_usage_t *)
 		) fp)(
 			minor_status,
-			impersonator_cred_handle,
-			desired_name,
-			time_req,
-			desired_mechs,
-			cred_usage,
-			output_cred_handle,
-			actual_mechs,
-			time_rec);
+			input_cred_handle,
+			input_usage,
+			desired_mech,
+			overwrite_cred,
+			default_cred,
+			cred_store,
+			elements_stored,
+			cred_usage_stored);
 	}
 
 */
