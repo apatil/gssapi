@@ -410,7 +410,7 @@ func (lib *Lib) StoreCredInto(inputCredHandle *CredId,
 		C.OM_uint32(defaultCred),
 		credStore.C_gss_const_key_value_set_t,
 		&elementsStored.C_gss_OID_set,
-		(*C_gss_cred_usage_t)(&credUsageStored))
+		(*C.gss_cred_usage_t)(&credUsageStored))
 
 	err = lib.stashLastStatus(maj, min)
 	if err != nil {
