@@ -198,7 +198,7 @@ wrap_gss_store_cred_into(void *fp,
 			OM_uint32,
 			gss_const_key_value_set_t,
 			gss_OID_set *,
-			gss_cred_usage *)
+			gss_cred_usage_t *)
 		) fp)(
 			minor_status,
 			impersonator_cred_handle,
