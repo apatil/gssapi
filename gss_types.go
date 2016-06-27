@@ -6,6 +6,7 @@ package gssapi
 
 /*
 #include <gssapi/gssapi.h>
+#include <gssapi/gssapi_ext.h>
 */
 import "C"
 
@@ -69,6 +70,13 @@ type CredId struct {
 type CtxId struct {
 	*Lib
 	C_gss_ctx_id_t C.gss_ctx_id_t
+}
+
+// A ConstKeyValueSet represents a key-value set. Key-value sets are used for
+// storing credentials.
+type ConstKeyValueSet struct {
+	*Lib
+	C_const_key_value_set_t C.const_key_value_set_t
 }
 
 // Aliases for the simple types
